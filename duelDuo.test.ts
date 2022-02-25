@@ -21,26 +21,47 @@ test('Title shows up when page loads', async () => {
     await driver.sleep(2000)
 })
 
+// test('displays the div choices when I click drawButton', async () => {
+//     const drawButton = await driver.findElement(By.id('draw'))
+//     await driver.sleep(2000)
+//     const displayed = await drawButton.isDisplayed()
+//     const answer = await drawButton.click()
+//     await driver.sleep(2000)
+//     const choices = await driver.findElement(By.id('choices.container'))
+//     // expect(answer).toBe(choices)
+// })
+
+
 test('displays the div choices when I click drawButton', async () => {
-    const drawButton = await driver.findElement(By.id('draw'))
     await driver.sleep(2000)
-    const displayed = await drawButton.isDisplayed()
-    const answer = await drawButton.click()
+    await driver.findElement(By.id('draw')).click()
     await driver.sleep(2000)
-    const choices = await driver.findElement(By.id('choices.container'))
+    // const displayed = await drawButton.isDisplayed()
+
+    const choices = await driver.findElement(By.id('choices'))
+
+    const displayed = await choices.isDisplayed()
+    // const answer = await drawButton.click()
+    await driver.sleep(2000)
+    // const choices = await driver.findElement(By.id('choices.container'))
+
+    expect(displayed).toBe(true)
     // expect(answer).toBe(choices)
 })
 
-test('clicking add to duo button displays div with id = player-duo', async () => {
-    const drawButton = await driver.findElement(By.id('draw'))
-    await driver.sleep(2000)
-    const displayed = await drawButton.isDisplayed()
-    const answer = await drawButton.click()
-    await driver.sleep(2000)
 
-    const addtoDuo = await driver.findElement(By.id('.bot-btn'))
-    await driver.sleep(2000)
-    await addtoDuo.click()
-    await driver.sleep(2000)
-    // expect(answer).toBe(true)
-})
+
+
+// test('clicking add to duo button displays div with id = player-duo', async () => {
+//     const drawButton = await driver.findElement(By.id('draw'))
+//     await driver.sleep(2000)
+//     const displayed = await drawButton.isDisplayed()
+//     const answer = await drawButton.click()
+//     await driver.sleep(2000)
+
+//     const addtoDuo = await driver.findElement(By.id('.bot-btn'))
+//     await driver.sleep(2000)
+//     await addtoDuo.click()
+//     await driver.sleep(2000)
+//     // expect(answer).toBe(true)
+// })
