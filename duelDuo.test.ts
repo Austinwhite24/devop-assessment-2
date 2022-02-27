@@ -44,15 +44,29 @@ test('displays the div choices when I click drawButton', async () => {
 
 
 test('clicking add to duo button displays div with id = player-duo', async () => {
-    const drawButton = await driver.findElement(By.id('draw'))
-    await driver.sleep(2000)
-    const displayed = await drawButton.isDisplayed()
-    const answer = await drawButton.click()
+    await driver.findElement(By.id('draw')).click()
+
     await driver.sleep(2000)
 
-    const addtoDuo = await driver.findElement(By.id('.bot-btn'))
+    await driver.findElement(By.xpath('(//button[text()="Add to Duo"])[1]')).click()
+
+    const playerDuo = await driver.findElement(By.id('player-duo'))
+
     await driver.sleep(2000)
-    await addtoDuo.click()
-    await driver.sleep(2000)
+
+    const displayed = await playerDuo.isDisplayed()
+
+    expect(displayed).toBe(true)
+
+    
+
+
+    // const addtoDuo = await driver.findElement(By.id('.bot-btn'))
+
+    // await driver.sleep(2000)
+
+  
+
+    // await driver.sleep(2000)
     // expect(answer).toBe(true)
 })
