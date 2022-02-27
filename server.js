@@ -51,6 +51,16 @@ rollbar.log('My 5th and last rollbar log')
 
 
 
+app.get('/api/robots', (rewq, res) => {
+    try {
+        res.status(200).send(botsArr)
+    } catch (error) {
+        rollbar.critical('could not find botsArr') 
+        console.log('ERROR GETTING BOTS', error)
+        res.sendStatus(400)
+    }
+})
+
 
 
 app.get('/api/robots', (req, res) => {
